@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sesi_3/sesi3/counter.dart';
 import 'package:flutter_sesi_3/sesi3/sesi3.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const CounterContoh(),
+      home: const Counter(),
     );
   }
 }
