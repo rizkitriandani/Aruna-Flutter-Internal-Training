@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sesi_3/empat.dart';
-import 'package:flutter_sesi_3/home.dart';
+import 'package:flutter_sesi_3/sesi-5/empat.dart';
+import 'package:flutter_sesi_3/sesi-5/home.dart';
 
-import 'package:flutter_sesi_3/login.dart';
-import 'package:flutter_sesi_3/routes.dart';
-import 'package:flutter_sesi_3/tiga.dart';
+import 'package:flutter_sesi_3/sesi-5/login.dart';
+import 'package:flutter_sesi_3/sesi-5/routes.dart';
+import 'package:flutter_sesi_3/sesi-5/tiga.dart';
 
 void main() {
   runApp(const MyApp());
