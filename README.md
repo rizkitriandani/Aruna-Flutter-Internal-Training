@@ -1,4 +1,4 @@
-# flutter_sesi_3
+# flutter internal training
 
 A new Flutter project.
 

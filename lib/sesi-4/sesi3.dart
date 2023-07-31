@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class StackContoh extends StatelessWidget {
   const StackContoh({
@@ -73,7 +74,8 @@ class _CounterContohState extends State<CounterContoh> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  // Navigator.pop(context);
+                  SystemNavigator.pop();
                 },
                 child: const Text('Kembali'),
               ),

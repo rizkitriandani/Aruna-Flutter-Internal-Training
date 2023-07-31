@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sesi_3/sesi3/sesi3.dart';
+import 'package:flutter_sesi_3/sesi-5/empat.dart';
+import 'package:flutter_sesi_3/sesi-5/home.dart';
+
+import 'package:flutter_sesi_3/sesi-5/login.dart';
+import 'package:flutter_sesi_3/sesi-5/routes.dart';
+import 'package:flutter_sesi_3/sesi-5/tiga.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,11 +15,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    var materialApp = MaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const CounterContoh(),
+      initialRoute: '/',
+      routes: routes,
     );
+    return materialApp;
   }
 }
