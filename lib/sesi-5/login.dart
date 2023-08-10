@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sesi_3/sesi-5/home.dart';
+
+import 'colors.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -15,26 +16,19 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Login Page'),
+            const Text('Selamat Datang di Internal Training Flutter'),
             const SizedBox(height: 20),
             ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const HomePage()));
-
-                  // Navigator.pushNamed(context, '/home');
-                  // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
-                  // Navigator.pushReplacementNamed(context, '/home');
-                  Navigator.popAndPushNamed(context, '/home');
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomePage()));
                 },
-                child: const Text("Masuk")),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("Kembali")),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: kPrimaryColor,
+                    shape: const StadiumBorder()),
+                child: const Text("Masuk", style: TextStyle(color: Colors.white))),
           ],
         ),
       ),
