@@ -4,9 +4,9 @@ import 'package:http/http.dart' as http;
 
 abstract class ApiService {
   Future fetchPassengerData();
+  Future fetchPassengerDataById(String id);
   Future addPassenger();
-  Future updatePassengerData(
-      String userId, Map<String, dynamic> updatedData);
+  Future updatePassengerData(String userId, Map<String, dynamic> updatedData);
   Future deleteUser(String userId);
 }
 
@@ -73,5 +73,22 @@ class ApiServiceImpl extends ApiService {
     } else {
       print('Failed to update user. Status: ${response.statusCode}');
     }
+  }
+
+  @override
+  Future<http.Response> fetchPassengerDataById(String id) async {
+    final response = await http.get(
+      Uri.parse('https://api.instantwebtools.net/v1/passenger/$id'),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    if (response.statusCode == 200) {
+      print('Response data: ${response.body}');
+    } else {
+      print('Request failed with status: ${response.statusCode}');
+    }
+
+    return response;
   }
 }

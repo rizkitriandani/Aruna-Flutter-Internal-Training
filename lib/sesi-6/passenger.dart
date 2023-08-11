@@ -13,9 +13,10 @@ class PassengerPage extends StatefulWidget {
 class _PassengerPageState extends State<PassengerPage> {
   final apiService = ApiServiceImpl();
   final List dataPassenger = [];
+  String singleData = '';
+  final TextEditingController controller = TextEditingController();
   bool isLoading = false;
 
-  //make reusable snackbar
   void showSnackBar({required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -33,6 +34,18 @@ class _PassengerPageState extends State<PassengerPage> {
     final data = json.decode(response.body)['data'];
     setState(() {
       dataPassenger.addAll(data);
+      isLoading = false;
+    });
+  }
+
+  getPassengerById() async {
+    setState(() {
+      isLoading = true;
+    });
+    final response = await apiService.fetchPassengerDataById(controller.text);
+    final data = json.decode(response.body);
+    setState(() {
+      singleData = data.toString();
       isLoading = false;
     });
   }
@@ -62,22 +75,54 @@ class _PassengerPageState extends State<PassengerPage> {
         title: const Text('Passenger Page'),
       ),
       body: Center(
-          child: isLoading
+          child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: controller,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter ID Passenger',
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                ElevatedButton(
+                  onPressed: () async {
+                    await getPassengerById();
+                  },
+                  child: const Text('Submit'),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(singleData),
+          const SizedBox(height: 10),
+          isLoading
               ? const CircularProgressIndicator()
-              : ListView.builder(
-                  itemCount: dataPassenger.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                        title: Text(dataPassenger[index]['name']),
-                        subtitle:
-                            Text(dataPassenger[index]['trips'].toString()),
-                        trailing: IconButton(
-                          onPressed: () {
-                            deletePassenger(index);
-                          },
-                          icon: const Icon(Icons.delete),
-                        ));
-                  })),
+              : Expanded(
+                  child: ListView.builder(
+                      itemCount: dataPassenger.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                            title: Text(dataPassenger[index]['name']),
+                            subtitle:
+                                Text(dataPassenger[index]['trips'].toString()),
+                            trailing: IconButton(
+                              onPressed: () {
+                                deletePassenger(index);
+                              },
+                              icon: const Icon(Icons.delete),
+                            ));
+                      }),
+                )
+        ],
+      )),
     );
   }
 }
