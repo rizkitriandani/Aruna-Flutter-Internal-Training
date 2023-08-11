@@ -4,10 +4,10 @@ import 'package:http/http.dart' as http;
 
 abstract class ApiService {
   Future fetchPassengerData();
-  Future<void> addPassenger();
-  Future<void> updatePassengerData(
+  Future addPassenger();
+  Future updatePassengerData(
       String userId, Map<String, dynamic> updatedData);
-  Future<void> deleteUser(String userId);
+  Future deleteUser(String userId);
 }
 
 class ApiServiceImpl extends ApiService {
@@ -25,7 +25,7 @@ class ApiServiceImpl extends ApiService {
   }
 
   @override
-  Future<void> deleteUser(String userId) async {
+  Future<http.Response> deleteUser(String userId) async {
     final response = await http.delete(
       Uri.parse('https://api.instantwebtools.net/v1/passenger/$userId'),
       headers: <String, String>{
@@ -40,6 +40,7 @@ class ApiServiceImpl extends ApiService {
       print('Failed to delete user. Status: ${response.statusCode}');
       print('Response data: ${response.body}');
     }
+    return response;
   }
 
   @override

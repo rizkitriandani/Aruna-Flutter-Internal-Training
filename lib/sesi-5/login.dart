@@ -9,9 +9,6 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login Page'),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -28,7 +25,8 @@ class LoginPage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: kPrimaryColor,
                     shape: const StadiumBorder()),
-                child: const Text("Masuk", style: TextStyle(color: Colors.white))),
+                child:
+                    const Text("Masuk", style: TextStyle(color: Colors.white))),
           ],
         ),
       ),
