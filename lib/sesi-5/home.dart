@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sesi_3/sesi-5/tiga.dart';
 
+import '../sesi-6/passenger.dart';
 import '../sesi-4/counter.dart';
 import 'colors.dart';
 
@@ -23,7 +24,7 @@ class HomePage extends StatelessWidget {
         'title': 'Listview',
         'onTap': () =>
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return const HalamanTiga();
+              return const PassengerPage();
             }))
       }
     ];
