@@ -15,6 +15,19 @@ class ApiService {
     return response;
   }
 
+  Future<http.Response> fetchWeatherData(
+      {required double latitude, required double longitude}) async {
+    final response = await http.get(Uri.parse(
+        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=ffe9b1deaba14cc1cbdc2a515fca6698&units=metric'));
+    if (response.statusCode == 200) {
+      print(response.body);
+    } else {
+      print(response.body);
+      throw Exception('Failed to load data');
+    }
+    return response;
+  }
+
   Future addPassenger() async {
     final response = await http.post(
         Uri.parse('https://api.instantwebtools.net/v1/passenger'),
